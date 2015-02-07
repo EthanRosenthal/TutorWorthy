@@ -2,3 +2,5 @@ Insight2014C.pem
 commands.txt
 *.pyc
 presentations/
+.ipynb_checkpoints/
+.gitignore
