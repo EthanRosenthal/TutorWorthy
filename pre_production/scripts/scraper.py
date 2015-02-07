@@ -1,4 +1,12 @@
-import MySQLdb as mdb
+"""
+Scrapes profile info from all NYC tutors from www.wyzant.com
+
+Specify output file name at bottom in main() function
+
+Author: Ethan Rosenthal
+Last Modified: 2/7/2015
+"""
+
 from BeautifulSoup import BeautifulSoup
 import urllib2
 import pandas as pd
@@ -21,9 +29,14 @@ class region_crawler():
         self.outfile = outfile
 
     def scrape_pages(self, page):
+        """
+        Main scraping function. Moves through each page of the list of NYC tutors. Statement to check for the end of the list is not currently working. Need to ctrl-c out of the program to stop scraping.
+        """
 
         while True:
             print 'Scraping page ' + str(self.page)
+
+            # Format of url is http://www.wyzant.com/New_York_City_tutors.aspx?sl=80075877&sort=27&pagesize=5&pagenum=1 where the 1 at the end is the page number. Increase page number by 1 each iteration of while loop in order to crawl through pages.
             self.current_url = self.region_url + str(self.page)
             ufile = urllib2.urlopen(self.current_url)
 
@@ -34,17 +47,19 @@ class region_crawler():
 
             self.scrape_people(people)
 
-            self.page += 1
+            self.page += 1 # Next page
 
     def scrape_people(self, people):
+        """
+        Scrapes profile info from all people on a given page of WyzAnt. Runs all class methods for picking out different profile features.
+        """
 
         for person in people:
             name = ''
             hourly_rate = int(-1)
             self.current_url = self.base_url + person.find('a')['href']
 
-            # Should do a better version of try/excepting
-
+            # Should do a better version of try/excepting of connection issues.
             try:
                 person_ufile = urllib2.urlopen(self.current_url)
             except:
@@ -54,6 +69,7 @@ class region_crawler():
 
             soup = BeautifulSoup(person_ufile)
 
+            # Get various features by running all class methods.
             name = self.get_name(soup)
             hourly_rate = self.get_hourly_rate(soup)
             raw_subjects, qual_subjects, linked_subjects = self.get_subjects(soup)
@@ -68,6 +84,8 @@ class region_crawler():
             bio = self.get_bio(soup)
 
             print name
+
+            # Write features to dictionary.
             person_row = {}
             person_row['name'] = name
             person_row['hourly_rate'] = hourly_rate
@@ -87,24 +105,33 @@ class region_crawler():
             person_row['bio'] = bio
             person_row['url'] = self.current_url
 
-
+            # Write dictionary to JSON ouput file.
             json.dump(person_row, self.outfile)
             self.outfile.write('\n')
 
             self.idx += 1
 
     def get_name(self, soup):
-
+        """
+        Get tutors name. Just returns first name and last initial. ex: Ethan R.
+        """
         name = soup.find('h1', {'itemprop':'name'}).renderContents()
         return name
 
     def get_hourly_rate(self, soup):
-
+        """
+        Get tutor's hourly rate.
+        """
         hourly_rate = int(soup.find('span', {'class':'price-amt'}).renderContents())
         return hourly_rate
 
     def get_subjects(self, soup):
         """
+        Get subjects that tutor tutors. Three classes of subjects:
+        - qualified (tutor took qualification test)
+        - linked (tutor has a hover link with more info about themselves in relation to the subject)
+        - raw (Neither qualified nor linked)
+
         If the topic is "qualified" then search span class: 'qual'
         If the topic is linked to, search 'a' class: 'profile-subjectDescLink'
         If there's no link and topic is not, then just need the text... getText()
@@ -139,6 +166,9 @@ class region_crawler():
         return raw_subjects, qual_subjects, linked_subjects
 
     def get_education(self, soup):
+        """
+        Get tutor's educational degrees. Return dictionary with keys =  University and values = Degree (MBA, MD, etc...)
+        """
         try:
             ed_sec = soup.find('div', {'id':'EducationSection'})
             degrees = ed_sec.findAll('div', {'class':'profile-subsection'})
@@ -150,6 +180,7 @@ class region_crawler():
                     education[university] = []
                 try:
                     degree = degree.getText().split(university)
+                    # Handle HTML encoding
                     if degree[1] == 'Master&#39;s':
                         degree[1] = 'Masters'
                     education[university].append(degree[1])
@@ -162,6 +193,9 @@ class region_crawler():
         return education
 
     def get_tutor_badge(self, soup):
+        """
+        If tutor has badge (star image next to profile pic with number of hours tutored), then get HTML information about the badge. Includes nuber of hours tutored in the text.
+        """
         try:
             badge = soup.find('img', {'class':'TutorBadge'})['title']
         except:
@@ -169,6 +203,9 @@ class region_crawler():
         return badge
 
     def has_profile_picture(self, soup):
+        """
+        Find if tutor has a profile picture. Return boolean value.
+        """
 
         img_src = soup.find('img', {'id':'ImageTutor'})['src']
 
@@ -180,6 +217,9 @@ class region_crawler():
         return profile_picture
 
     def get_rating(self, soup):
+        """
+        Get rating and number of ratings.
+        """
         try:
             rating_div = soup.find('div', {'class':'tutor-stat tutor-stat-rating'})
             rating = float(rating_div.find('span').renderContents())
@@ -193,6 +233,9 @@ class region_crawler():
         return rating, number_of_ratings
 
     def get_zip_code(self, soup):
+        """
+        Get zip code and "zip radius" (distance tutor is willing to travle for tutoring)
+        """
 
         try:
             zip_tag = soup.find('h3', {'class':'icon-hdr-travel'})
@@ -220,6 +263,9 @@ class region_crawler():
         return review_list
 
     def get_response_time(self, soup):
+        """
+        Get average time it takes tutor to respond to emails. Returns string. Parse string for actual time later in cleanup_tutor_features.py
+        """
 
         response_time = soup.find('div', \
             {'class':'tutor-stat tutor-stat-response'})
@@ -231,6 +277,9 @@ class region_crawler():
         return response_time
 
     def get_background_check(self, soup):
+        """
+        Get text associated with background check. If tutor has a background check, text mentions date of background check. Parse text later in cleanup_tutor_features.py.
+        """
 
         try:
             bg = soup.find('span', \
@@ -241,7 +290,9 @@ class region_crawler():
         return bg
 
     def get_bio(self, soup):
-
+        """
+        Get text associated with tutor's personal biography.
+        """
         try:
             bio = soup.find('p', {'class':'freeResponse'}).renderContents()
         except:
