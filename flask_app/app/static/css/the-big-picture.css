@@ -1,0 +1,69 @@
+/*!
+ * Start Bootstrap - The Big Picture HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: none;
+}
+
+.full {
+  background: url(/static/img/pencil_2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+
+}
+.navbar-custom {
+    background-color: rgb(36,80,127);
+    color: #FFFFFF;
+}
+.navbar-custom, a {
+    color: rgb(255, 255, 255);
+}
+
+.navbar-custom .navbar-brand {
+  color: rgb(255, 255, 255);
+}
+
+.panel {
+background: rgba(255,255,255,0.95);
+}
+
+.panel-custom {
+  border-color: #d6e9c6;
+  font-size: 125%;
+
+}
+.panel-custom > .panel-heading {
+  color: #000000;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  font-size: 175%;
+}
+
+.panel-custom > .panel-heading a{
+    color: #6495ED;
+}
+
+.panel-custom > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #d6e9c6;
+}
+.panel-custom > .panel-heading .badge {
+  color: #dff0d8;
+  background-color: #3c763d;
+}
+.panel-custom > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #d6e9c6;
+
+}
+
+.panel-custom a{
+    color: #6495ED;
+    text-decoration: none;
+}

@@ -1,0 +1,500 @@
+(lp0
+S'EdD'
+p1
+aS'Enrolled'
+p2
+aS'Graduate_Coursework'
+p3
+aS'J.D.'
+p4
+aS'MBA'
+p5
+aS'MD'
+p6
+aS'MEd'
+p7
+aS'Masters'
+p8
+aS'Other'
+p9
+aS'PhD'
+p10
+aS'avg_review_length'
+p11
+aS'badge_hours'
+p12
+aS'days_since_last_review'
+p13
+aS'has_rating'
+p14
+aS'lat'
+p15
+aS'lon'
+p16
+aS'number_of_ratings'
+p17
+aS'number_of_reviews'
+p18
+aS'profile_picture'
+p19
+aS'rating'
+p20
+aS'zip_code'
+p21
+aS'zip_radius'
+p22
+aS'rating_x_number_of_ratings'
+p23
+aS'has_ivy_degree'
+p24
+aS'has_background_check'
+p25
+aS'days_since_background_check'
+p26
+aS'response_time'
+p27
+aS'avg_review_sentiment'
+p28
+aS'lat_x_lon'
+p29
+aS'zip_radius_x_lat_x_lon'
+p30
+aS'avg_review_length_x_sent_score'
+p31
+aS'number_of_reviews_x_avg_review_length'
+p32
+aS'number_of_reviews_x_avg_review_sentiment'
+p33
+aS'number_of_ratings_x_number_of_reviews'
+p34
+aVcat_art
+p35
+aVcat_business
+p36
+aVcat_computer
+p37
+aVcat_corporate_training
+p38
+aVcat_elementary_education
+p39
+aVcat_english
+p40
+aVcat_history
+p41
+aVcat_homeschool
+p42
+aVcat_language
+p43
+aVcat_math
+p44
+aVcat_music
+p45
+aVcat_science
+p46
+aVcat_special_needs
+p47
+aVcat_sports_recreation
+p48
+aVcat_test_preparation
+p49
+aVACT English
+p50
+aVACT Math
+p51
+aVACT Reading
+p52
+aVACT Science
+p53
+aVADD/ADHD
+p54
+aVAccounting
+p55
+aVAdobe Photoshop
+p56
+aVAlgebra 1
+p57
+aVAlgebra 2
+p58
+aVAmerican History
+p59
+aVAnatomy
+p60
+aVAnthropology
+p61
+aVArt History
+p62
+aVAspergers
+p63
+aVAutism
+p64
+aVBasketball
+p65
+aVBible Studies
+p66
+aVBiochemistry
+p67
+aVBiology
+p68
+aVBusiness
+p69
+aVCalculus
+p70
+aVCareer Development
+p71
+aVChemistry
+p72
+aVChinese
+p73
+aVClassics
+p74
+aVCollege Counseling
+p75
+aVDifferential Equations
+p76
+aVDiscrete Math
+p77
+aVDrawing
+p78
+aVDyslexia
+p79
+aVESL/ESOL
+p80
+aVEar Training
+p81
+aVEconomics
+p82
+aVElementary (K-6th)
+p83
+aVElementary Math
+p84
+aVElementary Science
+p85
+aVEnglish
+p86
+aVEuropean History
+p87
+aVFilm
+p88
+aVFitness
+p89
+aVFrench
+p90
+aVGED
+p91
+aVGMAT
+p92
+aVGRE
+p93
+aVGeneral Computer
+p94
+aVGeneral Music
+p95
+aVGenetics
+p96
+aVGeography
+p97
+aVGeometry
+p98
+aVGovernment & Politics
+p99
+aVGrammar
+p100
+aVHandwriting
+p101
+aVLinear Algebra
+p102
+aVLiterature
+p103
+aVLogic
+p104
+aVMacintosh
+p105
+aVMicrobiology
+p106
+aVMicrosoft Excel
+p107
+aVMicrosoft Outlook
+p108
+aVMicrosoft PowerPoint
+p109
+aVMicrosoft Windows
+p110
+aVMicrosoft Word
+p111
+aVMusic History
+p112
+aVMusic Theory
+p113
+aVOrganic Chemistry
+p114
+aVPSAT
+p115
+aVPainting
+p116
+aVPhilosophy
+p117
+aVPhonics
+p118
+aVPhotography
+p119
+aVPhysical Science
+p120
+aVPhysics
+p121
+aVPhysiology
+p122
+aVPiano
+p123
+aVPrealgebra
+p124
+aVPrecalculus
+p125
+aVProbability
+p126
+aVProofreading
+p127
+aVPsychology
+p128
+aVPublic Speaking
+p129
+aVReading
+p130
+aVRegents
+p131
+aVReligion
+p132
+aVSAT Math
+p133
+aVSAT Reading
+p134
+aVSAT Writing
+p135
+aVSSAT
+p136
+aVSocial Studies
+p137
+aVSociology
+p138
+aVSpanish
+p139
+aVSpecial Needs
+p140
+aVSpelling
+p141
+aVStatistics
+p142
+aVStudy Skills
+p143
+aVTOEFL
+p144
+aVTheatre
+p145
+aVTrigonometry
+p146
+aVVocabulary
+p147
+aVWorld History
+p148
+aVWriting
+p149
+aVqual_ACT English
+p150
+aVqual_ACT Math
+p151
+aVqual_ACT Reading
+p152
+aVqual_ACT Science
+p153
+aVqual_ADD/ADHD
+p154
+aVqual_Accounting
+p155
+aVqual_Adobe Photoshop
+p156
+aVqual_Algebra 1
+p157
+aVqual_Algebra 2
+p158
+aVqual_American History
+p159
+aVqual_Anatomy
+p160
+aVqual_Anthropology
+p161
+aVqual_Art History
+p162
+aVqual_Aspergers
+p163
+aVqual_Autism
+p164
+aVqual_Basketball
+p165
+aVqual_Bible Studies
+p166
+aVqual_Biochemistry
+p167
+aVqual_Biology
+p168
+aVqual_Business
+p169
+aVqual_Calculus
+p170
+aVqual_Career Development
+p171
+aVqual_Chemistry
+p172
+aVqual_Chinese
+p173
+aVqual_Classics
+p174
+aVqual_College Counseling
+p175
+aVqual_Differential Equations
+p176
+aVqual_Discrete Math
+p177
+aVqual_Drawing
+p178
+aVqual_Dyslexia
+p179
+aVqual_ESL/ESOL
+p180
+aVqual_Ear Training
+p181
+aVqual_Economics
+p182
+aVqual_Elementary (K-6th)
+p183
+aVqual_Elementary Math
+p184
+aVqual_Elementary Science
+p185
+aVqual_English
+p186
+aVqual_European History
+p187
+aVqual_Film
+p188
+aVqual_Fitness
+p189
+aVqual_French
+p190
+aVqual_GED
+p191
+aVqual_GMAT
+p192
+aVqual_GRE
+p193
+aVqual_General Computer
+p194
+aVqual_General Music
+p195
+aVqual_Genetics
+p196
+aVqual_Geography
+p197
+aVqual_Geometry
+p198
+aVqual_Government & Politics
+p199
+aVqual_Grammar
+p200
+aVqual_Handwriting
+p201
+aVqual_Linear Algebra
+p202
+aVqual_Literature
+p203
+aVqual_Logic
+p204
+aVqual_Macintosh
+p205
+aVqual_Microbiology
+p206
+aVqual_Microsoft Excel
+p207
+aVqual_Microsoft Outlook
+p208
+aVqual_Microsoft PowerPoint
+p209
+aVqual_Microsoft Windows
+p210
+aVqual_Microsoft Word
+p211
+aVqual_Music History
+p212
+aVqual_Music Theory
+p213
+aVqual_Organic Chemistry
+p214
+aVqual_PSAT
+p215
+aVqual_Painting
+p216
+aVqual_Philosophy
+p217
+aVqual_Phonics
+p218
+aVqual_Photography
+p219
+aVqual_Physical Science
+p220
+aVqual_Physics
+p221
+aVqual_Physiology
+p222
+aVqual_Piano
+p223
+aVqual_Prealgebra
+p224
+aVqual_Precalculus
+p225
+aVqual_Probability
+p226
+aVqual_Proofreading
+p227
+aVqual_Psychology
+p228
+aVqual_Public Speaking
+p229
+aVqual_Reading
+p230
+aVqual_Regents
+p231
+aVqual_Religion
+p232
+aVqual_SAT Math
+p233
+aVqual_SAT Reading
+p234
+aVqual_SAT Writing
+p235
+aVqual_SSAT
+p236
+aVqual_Social Studies
+p237
+aVqual_Sociology
+p238
+aVqual_Spanish
+p239
+aVqual_Special Needs
+p240
+aVqual_Spelling
+p241
+aVqual_Statistics
+p242
+aVqual_Study Skills
+p243
+aVqual_TOEFL
+p244
+aVqual_Theatre
+p245
+aVqual_Trigonometry
+p246
+aVqual_Vocabulary
+p247
+aVqual_World History
+p248
+aVqual_Writing
+p249
+a.
