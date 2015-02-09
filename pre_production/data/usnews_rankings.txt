@@ -1,0 +1,280 @@
+{"princeton university": "1"}
+{"harvard university": "2"}
+{"yale university": "3"}
+{"columbia university": "4"}
+{"stanford university": "4"}
+{"university of chicago": "4"}
+{"massachusetts institute of technology": "7"}
+{"duke university": "8"}
+{"university of pennsylvania": "8"}
+{"california institute of technology": "10"}
+{"dartmouth college": "11"}
+{"johns hopkins university": "12"}
+{"northwestern university": "13"}
+{"washington university in st. louis": "14"}
+{"cornell university": "15"}
+{"brown university": "16"}
+{"university of notre dame": "16"}
+{"vanderbilt university": "16"}
+{"rice university": "19"}
+{"university of california  berkeley": "20"}
+{"emory university": "21"}
+{"georgetown university": "21"}
+{"university of california  los angeles": "23"}
+{"university of virginia": "23"}
+{"carnegie mellon university": "25"}
+{"university of southern california": "25"}
+{"tufts university": "27"}
+{"wake forest university": "27"}
+{"university of michigan  ann arbor": "29"}
+{"university of north carolina  chapel hill": "30"}
+{"boston college": "31"}
+{"new york university": "32"}
+{"college of william and mary": "33"}
+{"university of rochester": "33"}
+{"brandeis university": "35"}
+{"georgia institute of technology": "35"}
+{"university of california  san diego": "37"}
+{"case western reserve university": "38"}
+{"university of california  davis": "38"}
+{"lehigh university": "40"}
+{"university of california  santa barbara": "40"}
+{"boston university": "42"}
+{"northeastern university": "42"}
+{"rensselaer polytechnic institute": "42"}
+{"university of california  irvine": "42"}
+{"university of illinois  urbana- champaign": "42"}
+{"university of wisconsin  madison": "47"}
+{"pennsylvania state university  university park": "48"}
+{"university of florida": "48"}
+{"university of miami": "48"}
+{"university of washington": "48"}
+{"yeshiva university": "48"}
+{"university of texas  austin": "53"}
+{"george washington university": "54"}
+{"ohio state university  columbus": "54"}
+{"pepperdine university": "54"}
+{"tulane university": "54"}
+{"fordham university": "58"}
+{"southern methodist university": "58"}
+{"syracuse university": "58"}
+{"university of connecticut": "58"}
+{"brigham young university  provo": "62"}
+{"clemson university": "62"}
+{"purdue university  west lafayette": "62"}
+{"university of georgia": "62"}
+{"university of maryland  college park": "62"}
+{"university of pittsburgh": "62"}
+{"texas a&amp;m university  college station": "68"}
+{"worcester polytechnic institute": "68"}
+{"rutgers, the state university of new jersey  new brunswick": "70"}
+{"american university": "71"}
+{"baylor university": "71"}
+{"university of iowa": "71"}
+{"university of minnesota  twin cities": "71"}
+{"virginia tech": "71"}
+{"clark university": "76"}
+{"indiana university  bloomington": "76"}
+{"marquette university": "76"}
+{"miami university  oxford": "76"}
+{"stevens institute of technology": "76"}
+{"suny college of environmental science and forestry": "76"}
+{"texas christian university": "76"}
+{"university of delaware": "76"}
+{"university of massachusetts  amherst": "76"}
+{"michigan state university": "85"}
+{"university of california  santa cruz": "85"}
+{"university of vermont": "85"}
+{"binghamton university  suny": "88"}
+{"colorado school of mines": "88"}
+{"stony brook university  suny": "88"}
+{"university of alabama": "88"}
+{"university of colorado  boulder": "88"}
+{"university of denver": "88"}
+{"university of tulsa": "88"}
+{"drexel university": "95"}
+{"florida state university": "95"}
+{"north carolina state university  raleigh": "95"}
+{"university of san diego": "95"}
+{"st. louis university": "99"}
+{"university of missouri": "99"}
+{"university of nebraska  lincoln": "99"}
+{"university of new hampshire": "99"}
+{"auburn university": "103"}
+{"university at buffalo  suny": "103"}
+{"university of dayton": "103"}
+{"iowa state university": "106"}
+{"loyola university chicago": "106"}
+{"university of kansas": "106"}
+{"university of oklahoma": "106"}
+{"university of oregon": "106"}
+{"university of san francisco": "106"}
+{"university of tennessee": "106"}
+{"university of california  riverside": "113"}
+{"university of south carolina": "113"}
+{"university of st. thomas": "113"}
+{"the catholic university of america": "116"}
+{"duquesne university": "116"}
+{"illinois institute of technology": "116"}
+{"michigan technological university": "116"}
+{"university of the pacific": "116"}
+{"clarkson university": "121"}
+{"colorado state university": "121"}
+{"depaul university": "121"}
+{"temple university": "121"}
+{"university of arizona": "121"}
+{"rutgers, the state university of new jersey  newark": "126"}
+{"seton hall university": "126"}
+{"university at albany  suny": "126"}
+{"arizona state university  tempe": "129"}
+{"louisiana state university  baton rouge": "129"}
+{"ohio university": "129"}
+{"university of cincinnati": "129"}
+{"university of kentucky": "129"}
+{"university of utah": "129"}
+{"hofstra university": "135"}
+{"new school": "135"}
+{"university of arkansas": "135"}
+{"george mason university": "138"}
+{"missouri university of science & technology": "138"}
+{"oregon state university": "138"}
+{"washington state university": "138"}
+{"illinois state university": "142"}
+{"kansas state university": "142"}
+{"st. john fisher college": "142"}
+{"howard university": "145"}
+{"oklahoma state university": "145"}
+{"st. john's university": "145"}
+{"university of texas  dallas": "145"}
+{"adelphi university": "149"}
+{"new jersey institute of technology": "149"}
+{"san diego state university": "149"}
+{"university of alabama  birmingham": "149"}
+{"university of illinois  chicago": "149"}
+{"university of maryland  baltimore county": "149"}
+{"university of mississippi": "149"}
+{"maryville university of st. louis": "156"}
+{"mississippi state university": "156"}
+{"texas tech university": "156"}
+{"university of massachusetts  lowell": "156"}
+{"virginia commonwealth university": "156"}
+{"biola university": "161"}
+{"university of louisville": "161"}
+{"university of rhode island": "161"}
+{"university of south florida": "161"}
+{"university of wyoming": "161"}
+{"university of idaho": "166"}
+{"university of la verne": "166"}
+{"andrews university": "168"}
+{"university of hawaii  manoa": "168"}
+{"university of north dakota": "168"}
+{"university of south dakota": "168"}
+{"west virginia university": "168"}
+{"azusa pacific university": "173"}
+{"ball state university": "173"}
+{"bowling green state university": "173"}
+{"florida institute of technology": "173"}
+{"pace university": "173"}
+{"university of central florida": "173"}
+{"university of maine": "173"}
+{"western michigan university": "173"}
+{"edgewood college": "181"}
+{"immaculata university": "181"}
+{"north dakota state university": "181"}
+{"south dakota state university": "181"}
+{"spalding university": "181"}
+{"st. mary's university of minnesota": "181"}
+{"university of alabama  huntsville": "181"}
+{"university of north carolina  greensboro": "181"}
+{"southern illinois university  carbondale": "189"}
+{"university of houston": "189"}
+{"university of missouri  kansas city": "189"}
+{"university of new mexico": "189"}
+{"widener university": "189"}
+{"central michigan university": "194"}
+{"indiana university- purdue university  indianapolis": "194"}
+{"kent state university": "194"}
+{"northern illinois university": "194"}
+{"university of montana": "194"}
+{"university of nevada  reno": "194"}
+{"utah state university": "194"}
+{"louisiana tech university": "201"}
+{"university of north carolina  charlotte": "201"}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
+{}
