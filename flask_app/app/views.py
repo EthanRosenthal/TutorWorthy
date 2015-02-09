@@ -1,7 +1,6 @@
 from flask import render_template, request
 from app import app
 from zip_to_latlon import zip_to_latlon
-import model
 import numpy as np
 import pickle
 from sklearn.externals import joblib
