@@ -97,7 +97,6 @@ def location_overlap(example, df):
 def graduate_degrees(example, df):
     """
     Checks to see if example tutor has a graduate degree. If so, everybody else is fair game to compare. If not, then only look at other tutors with Bachelors.
-    Note: Not currently using this in production.
     """
     degrees = ['EdD',
                'Enrolled',
@@ -199,6 +198,10 @@ def main(example, df, possible_subjects):
         df.reset_index(drop=True, inplace=True)
     except:
         pass # Tutor is not in database
+
+
+    # Check for graduate degree
+    df = graduate_degrees(example, df)
 
     # Filter by Jaccard index and location.
     sim_tuts = subject_similarity(example, df, possible_subjects)
