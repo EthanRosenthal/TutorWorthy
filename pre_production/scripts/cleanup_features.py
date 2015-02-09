@@ -55,7 +55,6 @@ class clean():
 
     STILL TO DO
         - Parse educational degrees -> currently converting non-specific degrees to "Bachelors"
-        - MISSING: background check (days since), response time
     """
 
     def __init__(self, \
@@ -70,12 +69,16 @@ class clean():
         self.ts_table = ts_table
 
     def read_json(self):
+        """ Read in json dump from scraper.py """
         self.df = DataFrame([json.loads(line) for line in open(self.path)])
 
     def read_pickle(self):
+        """ Read in pickled file """
         self.df = pd.read_pickle(self.path)
 
     def remove_duplicate_tutors(self):
+        """ Remove any tutors that appear multiple times in dataframe """
+
         # Find unique identifier in profile url
         url_id = self.df['url'].str.split('/\?z').apply(lambda x: x[0].split('/')[-1])
         url_id.name = 'url_id'
@@ -89,6 +92,9 @@ class clean():
 
 
     def just_subjects(self):
+        """
+        Parse raw_subjects dictionaries and make set variable of all subjects tutored by tutor
+        """
         # Just get the subjects (ignore topics)
         just_subjects = self.df['raw_subjects']
 
@@ -102,12 +108,15 @@ class clean():
         self.df = pd.concat([self.df, just_subjects], axis=1)
 
     def subjects_to_boolean_features(self):
+        """
+        Transform from considering subjects as a categorical variable into binary feature vector. Create new column for every subject. Value is 1 or 0 depending on whether or not tutor tutors this subject.
+        """
         possible_subjects = list(set(itertools.chain.from_iterable(self.df['just_subjects'].values)))
 
         dummies_df = DataFrame(columns=possible_subjects, dtype='Bool')
 
         def subj_to_bool(row, categories):
-            """ Return True/False for if subject in categories is in row """
+            """ Return True/False if subject in categories is in row """
 
             out_row = []
             for subj in categories:
@@ -126,6 +135,9 @@ class clean():
         self.df = pd.concat([self.df, dummies_df], axis=1)
 
     def badge_to_hours_and_boolean(self):
+        """
+        Parse badge text to get number of hours tutored ('badge_hours') and boolean value for having a badge ('has_badge')
+        """
 
         numbers_regex = re.compile('\d+')
         def get_badge_info(row, numbers_regex):
@@ -140,12 +152,15 @@ class clean():
         self.df = self.df.drop('badge', axis=1)
 
     def ratings_to_boolean(self):
+        """ Return boolean value for whether or not tutor has ratings """
         has_rating = self.df['rating'].apply(lambda x: True - np.isnan(x))
         has_rating.name = 'has_rating'
         self.df = pd.concat([self.df, has_rating], axis=1)
 
     def get_education(self):
-        # ed = self.df['education'].apply(lambda x: [v[0] for v in x.itervalues() if len(v)>0])
+        """
+        Parse educational information. Create integer columns for all possible graduate degrees. Value in column is number of that degree that tutor has.
+        """
 
         def get_degree(ed_list):
             grad_degrees = {'MEd':0, 'MBA':0, 'Masters':0, \
@@ -164,7 +179,7 @@ class clean():
         ed = self.df['education'].apply(lambda x: get_degree(x))
         self.df = pd.concat([self.df, ed], axis=1)
 
-        ###########
+        ########### Not currently using method below
 
         deg_subjects = {}
 
@@ -178,6 +193,10 @@ class clean():
 
 
     def student_reviews_to_features(self):
+        """
+        Parse student reviews. Return 'review_date' for each review and 'days_since_last_review' for tutor.
+        """
+
 
         number_of_reviews = self.df['student_reviews'].apply(lambda x: len(x))
         number_of_reviews.name = 'number_of_reviews'
@@ -214,6 +233,9 @@ class clean():
                             student_reviews], axis=1)
 
     def background_check_info(self):
+        """
+        Determine if tutor has a background check ('has_background_check'). Get 'days_since_background_check'
+        """
 
         numbers_regex = re.compile('\d+')
 
@@ -243,6 +265,7 @@ class clean():
         self.df = pd.concat([self.df, bg_check], axis=1)
 
     def get_response_time(self):
+        """ Parse average response time in minutes"""
         time_regex = re.compile('\d+\s\w+')
 
         def parse_response(response_row, time_regex):
@@ -269,6 +292,9 @@ class clean():
                                                 parse_response(x, time_regex))
 
     def get_sentiment(self):
+        """
+        Get 'avg_review_sentiment', the average sentiment of all reviews as calculated by sentiment analysis using AFINN-111.txt
+        """
         fe = review_analyzer.feature_extractor(self.df['student_reviews'])
         fe = fe.extract()
         # fe = DataFrame('avg_review_sentiment', 'avg_review_length')
@@ -277,6 +303,9 @@ class clean():
 
 
     def zipcode_to_lat_lon(self):
+        """
+        Get latitude and longitude of center of zip code. This could stand to be sped up by using SQL instead of reading in and searching a csv.
+        """
         zips = pd.read_csv('../data/zipcode/zipcode.csv', dtype={'zip':'str'})
 
         # Remove missing zip codes (should only be one row)
@@ -294,7 +323,7 @@ class clean():
             except:
                 # Found these two missing zip codes on
                 # http://www.maptechnica.com
-                if row == '10065':
+                if row == '10065': # One of the richest zip codes!
                     lat = 40.76490050000000
                     lon = -73.96243050000000
                 elif row == '10075':
@@ -308,7 +337,9 @@ class clean():
         self.df = pd.concat([self.df, latlon], axis=1)
 
     def fillna(self):
-
+        """
+        Deal with missing values. Ad hoc.
+        """
         # If no reviews, days since last review = max (2395)
         self.df['days_since_last_review'].fillna( \
                     value=self.df['days_since_last_review'].max(), \
@@ -329,6 +360,9 @@ class clean():
         self.df['avg_review_sentiment'].fillna(value=0., inplace=True)
 
     def remove_unpopular_subjects(self):
+        """
+        Only keep top 100 most popular subject columns. Remove tutors who only tutor unpopular subjects (sorry!).
+        """
 
         subject_pop = self.df[self.df[self.possible_subjects]==True] \
                     [self.possible_subjects].sum()
@@ -349,6 +383,9 @@ class clean():
         self.df.drop(labels=unpop_tutors, axis=0, inplace=True)
 
     def get_subject_categories(self):
+        """
+        Parse subject "categories" (ex. "Elementary Education"). Return binary value for each category corresponding to whether or not the tutor tutors in this category.
+        """
         subject_cats = self.df['raw_subjects'].apply(lambda x: x.keys())
         subject_cats = set(list( \
                         itertools.chain.from_iterable(subject_cats.tolist()) \
@@ -385,6 +422,9 @@ class clean():
         self.cat_features = subj_cat_df.columns.tolist()
 
     def get_qualified_subjects(self):
+        """
+        Analogous to subjects_to_boolean_features(), but for "qualified subjects".
+        """
         empty_dict = {'qual_'+x:0 for x in self.possible_subjects}
         empty_series = Series(empty_dict)
 
@@ -403,7 +443,9 @@ class clean():
         self.qualified_subjects = qual_subj_df.columns.tolist()
 
     def has_ivy_degree(self):
-
+        """
+        Binary valued corresponding to whether or not the tutor has an ivy league degree. Best I could come up with. Maybe there's other versions of the lookup table, but who knows.
+        """
         ivy_leagues = ['brown', 'brown university', 'columbia', \
                    'columbia university', 'cornell', \
                    'cornell university', 'dartmouth', \
@@ -435,6 +477,9 @@ class clean():
 
 
     def create_interaction_features(self):
+        """
+        Not currently using this. Not sure why I put converting the zip_radius value here. Need to move
+        """
     #     self.df['rating_x_number_of_ratings'] = self.df['rating'] * \
     #                                             self.df['number_of_ratings']
         # self.df['lat_x_lon'] = self.df['lat'] * self.df['lon']
@@ -458,6 +503,9 @@ class clean():
 
 
     def sort_columns(self):
+        """
+        Sort feature columns (not including possible_subjects, qualified_subjects, or cat_features) by alphabetical order. Concatenate alphabetically sorted columns that were excluded above as groups.
+        """
         tmp_columns = self.df.columns.tolist()
 
         for subj in self.possible_subjects:
@@ -516,6 +564,9 @@ class clean():
         self.ts_table = ts_table
 
     def join_ts_table_to_subject_classes(self):
+        """
+        Add on columns to indicate if subject is "qualified" or "linked"
+        """
 
         def get_subject_classes(ts_row):
             tutor_row = self.df[self.df['tutor_id']==ts_row[0]]
@@ -544,6 +595,7 @@ class clean():
 
 
     def write_sql_tutor_subjects_table(self):
+        """ Write out ts_table to csv for later loading to SQL. """
 
         write_filename = raw_input('Input tutor_subjects_table path-filename: ')
         self.ts_table.to_csv(write_filename, \
@@ -555,6 +607,9 @@ class clean():
 
 
     def all_features(self):
+        """
+        Run all feature parsing methods from above.
+        """
         print "running remove_duplicate_tutors()"
         self.remove_duplicate_tutors()
 
