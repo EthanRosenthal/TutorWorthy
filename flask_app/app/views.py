@@ -21,7 +21,7 @@ http://www.wyzant.com/TutorSearch?kw=&z=10025&d=20&im=0 for all male tutors.
 # global clf
 # clf = joblib.load('./data/gb.joblib')
 global df
-df = pickle.load(open('./data/tutor_df_20150201.pkl', 'rb'))
+df = pickle.load(open('./data/tutor_df_20150201_dropRaquel.pkl', 'rb'))
 global possible_subjects
 possible_subjects = pickle.load(open('./data/possible_subjects.pkl', 'rb'))
 
