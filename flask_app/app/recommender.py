@@ -110,7 +110,7 @@ def graduate_degrees(example, df):
                'PhD']
     if all(x==0 for x in example[degrees].tolist()):
         # example has no graduate degree
-        return df[df.apply(lambda x: all(y==0 for y in x[degrees].tolist()))]
+        return df[df.apply(lambda x: all(y==0 for y in x[degrees].tolist()), axis=1)]
     else:
         return df
 
