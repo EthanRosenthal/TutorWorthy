@@ -47,6 +47,9 @@ def example_output():
 
     example_tutor_url = str(request.args.get('example_tutor_url'))
 
+    if example_tutor_url =='None':
+        return render_template("error_example.html")
+
     examples = {}
     examples['Elliott L.'] = "http://www.wyzant.com/Tutors/NY/New_York/7875805/?z=10116&d=20&sl=80075877&sort=27" # $50/hr -> $79
     examples['Erica S.'] = "http://www.wyzant.com/Tutors/NY/New_York/8671128/?z=10116&d=20&sl=80075877&sort=27" # $40/hr -> $49
@@ -159,4 +162,8 @@ def cities_input():
 @app.route('/error')
 def error():
     return render_template("error.html")
+
+@app.route('/error_example')
+def error_example():
+    return render_template("error_example.html")
 
