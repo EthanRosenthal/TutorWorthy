@@ -51,11 +51,11 @@ def example_output():
         return render_template("error_example.html")
 
     examples = {}
-    examples['Elliott L.'] = "http://www.wyzant.com/Tutors/NY/New_York/7875805/?z=10116&d=20&sl=80075877&sort=27" # $50/hr -> $79
-    examples['Erica S.'] = "http://www.wyzant.com/Tutors/NY/New_York/8671128/?z=10116&d=20&sl=80075877&sort=27" # $40/hr -> $49
-    examples['Jared A.'] = "http://www.wyzant.com/Tutors/NY/New_York/8565916/?z=10116&d=20&sl=80075877&sort=27" # $55/hr -> $50
-    examples['Jennifer T.'] = "http://www.wyzant.com/Tutors/NY/New_York/8462587/?z=10116&d=20&sl=80075877&sort=27" # $100/hr -> $82
-    examples['Linda W.'] = "http://www.wyzant.com/Tutors/NY/New_York/8587257/?z=10116&d=20&sl=80075877&sort=27" # $60
+    examples['Elliott L.'] = "http://www.wyzant.com/Tutors/NY/New_York/7875805/?z=10116&d=20&sl=80075877&sort=27"
+    # examples['Erica S.'] = "http://www.wyzant.com/Tutors/NY/New_York/8671128/?z=10116&d=20&sl=80075877&sort=27" # $40/hr -> $49
+    examples['Jared A.'] = "http://www.wyzant.com/Tutors/NY/New_York/8565916/?z=10116&d=20&sl=80075877&sort=27"
+    examples['Jennifer T.'] = "http://www.wyzant.com/Tutors/NY/New_York/8462587/?z=10116&d=20&sl=80075877&sort=27"
+    examples['Linda W.'] = "http://www.wyzant.com/Tutors/NY/New_York/8587257/?z=10116&d=20&sl=80075877&sort=27"
 
     tutor_url = examples[example_tutor_url]
 
@@ -113,7 +113,12 @@ def output():
     try:
         tutor_data = scrape_tutor.main(tutor_url)
         example, hourly_rate = cleanup_tutor_features.clean_tutor(tutor_data)
-        nn, max_tut, min_tut, img_io = recommender.main(example, df, possible_subjects)
+
+        try:
+            nn, max_tut, min_tut, img_io = recommender.main(example, df, possible_subjects)
+        except:
+            error_message = 'Looks like you\'re a special snowflake! There\'s not too many other similar tutors, so charge what you want.'
+            return render_template("error.html", error_message=error_message)
 
         tutor_name = example['name']
 
@@ -144,10 +149,8 @@ def output():
                         example_tutor=example_tutor, \
                         sim_plot=img_io)
     except:
-        # result = "Please enter correct WyzAnt tutor profile url"
-        # print result
-        # NEED TO MAKE ERROR PAGE!
-        return render_template("error.html")
+        error_message = 'Whoops! Cannot find WyzAnt profile. Did you enter the correct url?'
+        return render_template("error.html", error_message=error_message)
 
 
 @app.route('/slides')
