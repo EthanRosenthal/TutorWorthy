@@ -40,6 +40,8 @@ def jaccard_similarity(v1, v2):
 def subject_similarity(example, df, possible_subjects):
     """
     Filter out tutors with Jaccard similarity <= 0.3
+
+    Occasionally tutor teaches rare subject such that there is nobody with Jaccard similarity >0.3. The encompassing "try/except" in the parent views.py file picks this up as a failure to imput a correct url. Need to fix this error handling.
     """
     # Get subjects that example tutor tutors.
     ex_subj = example[possible_subjects][example[possible_subjects]==1].index.values
@@ -198,7 +200,6 @@ def main(example, df, possible_subjects):
         df.reset_index(drop=True, inplace=True)
     except:
         pass # Tutor is not in database
-
 
     # Check for graduate degree
     df = graduate_degrees(example, df)
